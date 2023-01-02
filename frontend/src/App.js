@@ -8,7 +8,6 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <JoblyRoutes />
-        <h1>hello</h1>
       </div>
     </BrowserRouter>
   );

@@ -22,8 +22,8 @@ class JoblyApi {
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${JoblyApi.token}` };
     const params = (method === "get")
-        ? data
-        : {};
+      ? data
+      : {};
 
     try {
       return (await axios({ url, method, data, params, headers })).data;
@@ -38,15 +38,28 @@ class JoblyApi {
 
   /** Get details on a company by handle. */
 
+  /** Get company by handle */
+
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     return res.company;
   }
 
+  /** Get list of companies (filtered by name if specified) */
+
+  static async getCompanies(name) {
+    let res = await this.request("companies", { name });
+    return res.companies;
+  }
+
   // obviously, you'll add a lot here ...
 }
 
+export default JoblyApi;
 // for now, put token ("testuser" / "password" on class)
 JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+  "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+
+
+
