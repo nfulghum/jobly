@@ -52,6 +52,13 @@ class JoblyApi {
     return res.companies;
   }
 
+  /** Get list of jobs (filtered by title) */
+
+  static async getJobs(title) {
+    let res = await this.request(`jobs`, { title });
+    return res.jobs;
+  }
+
   // obviously, you'll add a lot here ...
 }
 

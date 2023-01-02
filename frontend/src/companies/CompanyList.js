@@ -4,6 +4,15 @@ import CompanyCard from './CompanyCard';
 import SearchForm from '../SearchForm';
 import LoadingSpinner from '../LoadingSpinner';
 
+
+/** List of companies
+ * 
+ *  Returns list of companies from API.
+ *  search will filter specific companies and re-load page with results
+ * 
+ *  route /companies
+ */
+
 const CompanyList = () => {
 
     const [companies, setCompanies] = useState(null);

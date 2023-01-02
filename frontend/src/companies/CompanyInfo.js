@@ -3,6 +3,13 @@ import { useParams } from 'react-router-dom';
 import JoblyApi from '../api';
 import LoadingSpinner from '../LoadingSpinner';
 
+/** Company Info page
+ * 
+ *  Returns info about a company based on the handle
+ * 
+ *  route /companies/:handle
+ */
+
 const CompanyInfo = () => {
     const { handle } = useParams();
 
