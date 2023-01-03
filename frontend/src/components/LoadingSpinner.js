@@ -2,8 +2,8 @@ import React from 'react';
 
 const LoadingSpinner = () => {
     return (
-        <div>
-            loading...
+        <div className="LoadingSpinner">
+            Loading...
         </div>
     )
 }

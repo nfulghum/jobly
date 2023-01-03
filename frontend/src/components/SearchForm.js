@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const SearchForm = ({ searchFor }) => {
+
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleSubmit = (e) => {
@@ -14,15 +15,17 @@ const SearchForm = ({ searchFor }) => {
     }
 
     return (
-        <div>
+        <div className="SearchForm">
             <form onSubmit={handleSubmit}>
-                <input name="searchTerm"
-                    placeholder="Enter here"
+                <input
+                    name="searchTerm"
+                    placeholder="Find your future"
                     value={searchTerm}
                     onChange={handleChange}
                 />
                 <button type="submit">Submit</button>
             </form>
+
         </div>
     )
 }

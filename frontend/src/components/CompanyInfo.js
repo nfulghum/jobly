@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import JoblyApi from '../api';
-import LoadingSpinner from '../LoadingSpinner';
-
-/** Company Info page
- * 
- *  Returns info about a company based on the handle
- * 
- *  route /companies/:handle
- */
+import LoadingSpinner from './LoadingSpinner';
 
 const CompanyInfo = () => {
     const { handle } = useParams();
-
     const [company, setCompany] = useState(null);
 
     useEffect(function getCompanyAndJobsForUser() {
@@ -25,10 +17,9 @@ const CompanyInfo = () => {
     if (!company) return <LoadingSpinner />;
 
     return (
-        <div>
+        <div className="CompanyInfo">
             <h4>{company.name}</h4>
             <p>{company.description}</p>
-
         </div>
     )
 }

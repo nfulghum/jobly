@@ -1,16 +1,17 @@
 import React from 'react';
+import Navigation from './components/Navigation';
+import JoblyRoutes from './routes/JoblyRoutes';
 import { BrowserRouter } from 'react-router-dom';
-import JoblyRoutes from './routes/Routes';
-import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
-      <div className="App">
+    <div className="App">
+      <BrowserRouter>
+        <Navigation />
         <JoblyRoutes />
-      </div>
-    </BrowserRouter>
-  );
+      </BrowserRouter>
+    </div>
+  )
 }
 
-export default App;
+export default App
