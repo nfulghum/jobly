@@ -27,7 +27,7 @@ const CompanyList = () => {
 
     if (!companies) return <LoadingSpinner />;
 
-    console.log(companies)
+    // console.log(companies)
     return (
         <ThemeProvider theme={darkTheme}>
             <Grid display="flex" justifyContent="center" alignItems="center">

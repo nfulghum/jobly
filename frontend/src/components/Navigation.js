@@ -54,7 +54,7 @@ const Navigation = ({ logout }) => {
                                 <Link {...linkProps} to="companies">Companies</Link>
                                 <Link {...linkProps} to="jobs">Jobs</Link>
                                 <Link {...linkProps} to="profile">Profile</Link>
-                                <Button>Logout</Button>
+                                <Button logout={logout}>Logout</Button>
                             </>
                             :
                             <>

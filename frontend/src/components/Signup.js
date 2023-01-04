@@ -34,7 +34,7 @@ const SignupForm = ({ signup }) => {
         e.preventDefault();
         let result = await signup(formData);
         if (result.success) {
-            navigate.push('/companies');
+            navigate('/companies');
         } else {
             setFormErrors(result.errors)
         }
@@ -61,7 +61,7 @@ const SignupForm = ({ signup }) => {
                         Sign up
                     </Typography>
                     <form onSubmit={handleSubmit}>
-                        <Box component="form" noValidate sx={{ mt: 3 }}>
+                        <Box noValidate sx={{ mt: 3 }}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={6}>
                                     <TextField

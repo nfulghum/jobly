@@ -6,7 +6,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import useLocalStorage from './hooks/useLocalStorage';
-import jwt_decode from 'jwt-decode';
+import jwt from 'jsonwebtoken';
 import JoblyApi from './api';
 
 export const TOKEN_STORAGE_ID = "jobly-token"
@@ -27,7 +27,7 @@ const App = () => {
     async function getCurrentUser() {
       if (token) {
         try {
-          let { username } = jwt_decode(token);
+          let { username } = jwt.decode(token);
           JoblyApi.token = token;
           let currentUser = await JoblyApi.getCurrentUser(username);
           setCurrentUser(currentUser);
@@ -52,6 +52,7 @@ const App = () => {
       setToken(token);
       return { success: true };
     } catch (e) {
+      console.error("signup failed", e)
       return { success: false, e };
     }
   };

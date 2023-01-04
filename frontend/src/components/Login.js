@@ -30,7 +30,7 @@ const Login = ({ login }) => {
         e.preventDefault();
         let result = await login(formData);
         if (result.success) {
-            navigate.push('/companies');
+            navigate('/companies');
         } else {
             setFormErrors(result.errors);
         }
@@ -57,7 +57,7 @@ const Login = ({ login }) => {
                         Sign in
                     </Typography>
                     <form onSubmit={handleSubmit}>
-                        <Box component="form" noValidate sx={{ mt: 1 }}>
+                        <Box noValidate sx={{ mt: 1 }}>
                             <TextField
                                 margin="normal"
                                 required
