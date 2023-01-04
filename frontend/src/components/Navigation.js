@@ -18,7 +18,9 @@ const darkTheme = createTheme({
 });
 
 
-const Navigation = () => {
+const Navigation = ({ logout }) => {
+
+    const { currentUser } = useContext(UserContext);
 
 
     const linkProps = {
@@ -47,18 +49,19 @@ const Navigation = () => {
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Jobly! Launch your career today!
                         </Typography>
-                        <>
-                            <Link {...linkProps} to="companies">Companies</Link>
-                            <Link {...linkProps} to="jobs">Jobs</Link>
-                            <Link {...linkProps} to="profile">Profile</Link>
-                            <Button>Logout</Button>
-                        </>
-
-                        <>
-                            <Link {...linkProps} to="signup">Sign Up</Link>
-                            <Link {...linkProps} to="login">Login</Link>
-                        </>
-
+                        {currentUser ?
+                            <>
+                                <Link {...linkProps} to="companies">Companies</Link>
+                                <Link {...linkProps} to="jobs">Jobs</Link>
+                                <Link {...linkProps} to="profile">Profile</Link>
+                                <Button>Logout</Button>
+                            </>
+                            :
+                            <>
+                                <Link {...linkProps} to="signup">Sign Up</Link>
+                                <Link {...linkProps} to="login">Login</Link>
+                            </>
+                        }
                     </Toolbar>
                 </AppBar>
             </Box>

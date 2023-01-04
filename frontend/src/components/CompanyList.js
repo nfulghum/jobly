@@ -3,6 +3,7 @@ import JoblyApi from '../api';
 import CompanyCard from './CompanyCard';
 import LoadingSpinner from './LoadingSpinner';
 import SearchForm from './SearchForm';
+import Grid from '@mui/material/Grid';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const darkTheme = createTheme({
@@ -29,7 +30,9 @@ const CompanyList = () => {
     console.log(companies)
     return (
         <ThemeProvider theme={darkTheme}>
-            <SearchForm searchFor={search} />
+            <Grid display="flex" justifyContent="center" alignItems="center">
+                <SearchForm searchFor={search} />
+            </Grid>
             <div>
                 {companies.map(c => (
                     <CompanyCard

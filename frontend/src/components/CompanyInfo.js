@@ -1,8 +1,16 @@
+import { Container, Typography } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import JoblyApi from '../api';
 import JobCardList from './JobCardList';
 import LoadingSpinner from './LoadingSpinner';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+});
 
 const CompanyInfo = () => {
     const { handle } = useParams();
@@ -18,11 +26,22 @@ const CompanyInfo = () => {
     if (!company) return <LoadingSpinner />;
 
     return (
-        <div className="CompanyInfo">
-            <h4>{company.name}</h4>
-            <p>{company.description}</p>
-            <JobCardList jobs={company.jobs} />
-        </div>
+        <ThemeProvider theme={darkTheme}>
+            <Container maxWidth="sm">
+                <Typography
+                    component="h1"
+                    variant="h2"
+                    align="center"
+                    gutterBottom
+                >
+                    {company.name}
+                </Typography>
+                <Typography variant="h5" align="center" paragraph>
+                    {company.description}
+                </Typography>
+                <JobCardList jobs={company.jobs} />
+            </Container>
+        </ThemeProvider>
     )
 }
 

@@ -3,6 +3,15 @@ import SearchForm from './SearchForm';
 import JoblyApi from '../api';
 import LoadingSpinner from './LoadingSpinner';
 import JobCardList from './JobCardList';
+import Grid from '@mui/material/Grid';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+});
 
 
 const JobList = () => {
@@ -21,10 +30,12 @@ const JobList = () => {
     if (!jobs) return <LoadingSpinner />;
 
     return (
-        <div className="JobList">
-            <SearchForm searchFor={search} />
+        <ThemeProvider theme={darkTheme}>
+            <Grid display="flex" justifyContent="center" alignItems="center">
+                <SearchForm searchFor={search} />
+            </Grid>
             <JobCardList jobs={jobs} />
-        </div>
+        </ThemeProvider>
     )
 }
 
