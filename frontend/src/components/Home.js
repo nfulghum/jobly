@@ -1,8 +1,18 @@
 import React from 'react'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+});
 
 const Home = () => {
     return (
-        <div>Home</div>
+        <ThemeProvider theme={darkTheme}>
+
+        </ThemeProvider>
     )
 }
 
