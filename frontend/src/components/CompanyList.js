@@ -6,11 +6,6 @@ import SearchForm from './SearchForm';
 import Grid from '@mui/material/Grid';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-const darkTheme = createTheme({
-    palette: {
-        mode: 'dark',
-    },
-});
 
 const CompanyList = () => {
 
@@ -29,7 +24,7 @@ const CompanyList = () => {
 
     // console.log(companies)
     return (
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider>
             <Grid display="flex" justifyContent="center" alignItems="center">
                 <SearchForm searchFor={search} />
             </Grid>

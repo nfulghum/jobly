@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
 import UserContext from './UserContext';
 import {
-    Grid,
     Box,
     Typography,
-    Container,
     Link,
     Paper
 } from '@mui/material';
@@ -65,17 +63,3 @@ const Home = () => {
 }
 
 export default Home;
-
-{/* <Container maxWidth="sm">
-            <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                gutterBottom>
-                Jobly
-            </Typography>
-            <Typography
-                variant="h5" align="center" paragraph>
-                Launch your new and exciting career all in one space!
-            </Typography>
-        </Container> */}

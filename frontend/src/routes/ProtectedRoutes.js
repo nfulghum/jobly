@@ -2,16 +2,14 @@ import React, { useContext } from 'react';
 import { Route, Navigate } from 'react-router-dom';
 import UserContext from '../components/UserContext';
 
-const ProtectedRoute = ({ exact, path }) => {
+const ProtectedRoute = ({ children }) => {
     const { currentUser } = useContext(UserContext);
 
     if (!currentUser) {
-        return <Navigate to="/login" />;
+        return <Navigate to="/login" replace />;
     }
 
-    return (
-        <Route exact={exact} path={path} />
-    )
+    return children;
 }
 
 export default ProtectedRoute;

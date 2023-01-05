@@ -10,11 +10,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const darkTheme = createTheme({
-    palette: {
-        mode: 'dark',
-    },
-});
 
 
 const Login = ({ login }) => {
@@ -30,7 +25,7 @@ const Login = ({ login }) => {
         e.preventDefault();
         let result = await login(formData);
         if (result.success) {
-            navigate('/companies');
+            navigate('/');
         } else {
             setFormErrors(result.errors);
         }
@@ -42,7 +37,7 @@ const Login = ({ login }) => {
     }
 
     return (
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
@@ -87,7 +82,6 @@ const Login = ({ login }) => {
                                 fullWidth
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
-                                onSubmit={handleSubmit}
                             >
                                 Login
                             </Button>

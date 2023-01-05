@@ -8,14 +8,8 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 
-
-const darkTheme = createTheme({
-    palette: {
-        mode: 'dark',
-    },
-});
 
 const SignupForm = ({ signup }) => {
 
@@ -46,7 +40,7 @@ const SignupForm = ({ signup }) => {
     }
 
     return (
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
