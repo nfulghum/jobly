@@ -80,6 +80,13 @@ class JoblyApi {
     return res.user;
   }
 
+  /** Get the current user */
+
+  static async getCurrentUser(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
+
   // obviously, you'll add a lot here ...
 }
 

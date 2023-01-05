@@ -7,6 +7,7 @@ import Login from '../components/Login';
 import Profile from '../components/Profile';
 import Home from '../components/Home';
 import SignupForm from '../components/Signup';
+import ProtectedRoute from './ProtectedRoutes';
 
 
 const JoblyRoutes = ({ login, signup }) => {
@@ -14,12 +15,12 @@ const JoblyRoutes = ({ login, signup }) => {
         <div>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/companies" element={<CompanyList />} />
-                <Route path="/companies/:handle" element={<CompanyInfo />} />
-                <Route path="/jobs" element={<JobList />} />
                 <Route path="/login" element={<Login login={login} />} />
                 <Route path="/signup" element={<SignupForm signup={signup} />} />
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/companies" element={<ProtectedRoute><CompanyList /></ProtectedRoute>} />
+                <Route path="/companies/:handle" element={<ProtectedRoute><CompanyInfo /></ProtectedRoute>} />
+                <Route path="/jobs" element={<ProtectedRoute><JobList /></ProtectedRoute>} />
+                <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
             </Routes>
         </div>
     )

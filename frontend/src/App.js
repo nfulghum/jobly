@@ -23,6 +23,13 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
 
+  console.debug(
+    "App",
+    "infoLoaded=", infoLoaded,
+    "currentUser=", currentUser,
+    "token=", token,
+  );
+
   useEffect(function loadUserInfo() {
     async function getCurrentUser() {
       if (token) {

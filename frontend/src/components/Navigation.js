@@ -22,7 +22,6 @@ const Navigation = ({ logout }) => {
 
     const { currentUser } = useContext(UserContext);
 
-
     const linkProps = {
         underline: 'hover',
         component: NavLink,
@@ -51,15 +50,16 @@ const Navigation = ({ logout }) => {
                         </Typography>
                         {currentUser ?
                             <>
-                                <Link {...linkProps} to="companies">Companies</Link>
-                                <Link {...linkProps} to="jobs">Jobs</Link>
-                                <Link {...linkProps} to="profile">Profile</Link>
-                                <Button logout={logout}>Logout</Button>
+                                <Link sx={{ mr: 2 }} {...linkProps} to="companies">Companies</Link>
+                                <Link sx={{ mr: 2 }} {...linkProps} to="jobs">Jobs</Link>
+                                <Link sx={{ mr: 2 }} {...linkProps} to="profile">Profile</Link>
+                                <Link sx={{ mr: 2 }} onClick={logout} {...linkProps} to="/">Logout</Link>
+                                {currentUser.first_name || currentUser.username}
                             </>
                             :
                             <>
-                                <Link {...linkProps} to="signup">Sign Up</Link>
-                                <Link {...linkProps} to="login">Login</Link>
+                                <Link sx={{ mr: 2 }} {...linkProps} to="signup">Sign Up</Link>
+                                <Link sx={{ mr: 2 }} {...linkProps} to="login">Login</Link>
                             </>
                         }
                     </Toolbar>
