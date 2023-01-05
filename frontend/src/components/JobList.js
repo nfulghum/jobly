@@ -31,7 +31,7 @@ const JobList = () => {
 
     return (
         <ThemeProvider theme={darkTheme}>
-            <Grid display="flex" justifyContent="center" alignItems="center">
+            <Grid display="flex" justifyContent="center" >
                 <SearchForm searchFor={search} />
             </Grid>
             <JobCardList jobs={jobs} />

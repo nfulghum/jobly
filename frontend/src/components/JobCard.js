@@ -1,3 +1,5 @@
+import React, { useState, useEffect, useContext } from 'react';
+import UserContext from './UserContext';
 import {
     ThemeProvider,
     Box,
@@ -7,10 +9,22 @@ import {
     CardContent,
     Typography
 } from '@mui/material';
-import React, { useState, useEffect, useContext } from 'react';
-import UserContext from './UserContext';
+
 
 const JobCard = ({ id, title, salary, equity, companyName }) => {
+
+    const { hasAppliedToJob, applyToJob } = useContext(UserContext);
+    const [applied, setApplied] = useState();
+
+    useEffect(function updateAppliedStatus() {
+        setApplied(hasAppliedToJob(id));
+    }, [id, hasAppliedToJob]);
+
+    async function handleApply(e) {
+        if (hasAppliedToJob(id)) return;
+        applyToJob(id);
+        setApplied(true);
+    }
 
     return (
         <ThemeProvider>
@@ -22,6 +36,7 @@ const JobCard = ({ id, title, salary, equity, companyName }) => {
                     alignItems: 'center',
                 }}>
                 <Card sx={{ minWidth: 275 }}>
+                    {applied}
                     <CardContent sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -38,7 +53,9 @@ const JobCard = ({ id, title, salary, equity, companyName }) => {
                             {equity !== undefined && <div><small>Equity: {equity}</small></div>}
                         </Typography>
                         <CardActions>
-                            <Button size="small">Apply</Button>
+                            <Button onClick={handleApply} disabled={applied} size="small">
+                                {applied ? 'Applied' : 'Apply'}
+                            </Button>
                         </CardActions>
                     </CardContent>
                 </Card>

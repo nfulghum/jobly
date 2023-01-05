@@ -22,6 +22,7 @@ const App = () => {
   const [infoLoaded, setInfoLoaded] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
+  const [applicationIds, setApplicationIds] = useState(new Set([]));
 
   console.debug(
     "App",
@@ -38,6 +39,7 @@ const App = () => {
           JoblyApi.token = token;
           let currentUser = await JoblyApi.getCurrentUser(username);
           setCurrentUser(currentUser);
+          setApplicationIds(new Set(currentUser.applications));
         } catch (e) {
           setCurrentUser(null);
         }
@@ -74,13 +76,25 @@ const App = () => {
     }
   };
 
+  const hasAppliedToJob = (id) => {
+    return applicationIds.has(id);
+  };
+
+  const applyToJob = (id) => {
+    if (hasAppliedToJob(id)) return;
+    JoblyApi.applyToJob(currentUser.username, id);
+    setApplicationIds(new Set([...applicationIds, id]));
+  }
+
+
+
   if (!infoLoaded) return <LoadingSpinner />
 
   return (
 
     <ThemeProvider theme={darkTheme}>
       <BrowserRouter>
-        <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+        <UserContext.Provider value={{ currentUser, setCurrentUser, hasAppliedToJob, applyToJob }}>
           <Navigation logout={logout} />
           <JoblyRoutes login={login} signup={signup} />
         </UserContext.Provider>
